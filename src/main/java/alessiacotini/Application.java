@@ -118,6 +118,10 @@ public class Application {
         //prestitoDAO.save(presei);prestitoDAO.save(presette);prestitoDAO.save(preotto);prestitoDAO.save(prenove);prestitoDAO.save(predieci);
         //prestitoDAO.save(preundici);prestitoDAO.save(predodici);prestitoDAO.save(pretredici);prestitoDAO.save(prequattordici);prestitoDAO.save(prequindici);
 
+        //TEST DEI METODI
+
+
+
 
 
 
