@@ -1,0 +1,20 @@
+package alessiacotini.enums;
+
+public enum GenereLibro {
+    GIALLO_THRILLER,
+    FANTASY,
+    FANTASCIENZA,
+    ROMANCE,
+    STORICO,
+    AVVENTURA,
+    HORROR,
+    CONTEMPORANEO,
+    CLASSICI,
+    RAGAZZI,
+    FUMETTI_MANGA,
+    BIOGRAFIA,
+    STORIA_POLITICA,
+    CRESCITA_PERSONALE,
+    SCIENZA_TECNOLOGIA,
+    MANUALI_GUIDE;
+}
