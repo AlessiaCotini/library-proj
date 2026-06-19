@@ -70,6 +70,10 @@ public class Prestito {
         this.utente = utente;
     }
 
+    public UUID getPrestito_id() {
+        return prestito_id;
+    }
+
     public LocalDate getData_inizio() {
         return data_inizio;
     }
