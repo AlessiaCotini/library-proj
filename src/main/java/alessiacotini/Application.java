@@ -101,36 +101,72 @@ public class Application {
         Prestito pretre = new Prestito(travis, fahrenheit);
         Prestito prequattro = new Prestito(billie, ombravento);
         Prestito precinque = new Prestito(mgk, wired);
-        Prestito presei = new Prestito(kurt, lasolitudinedeinumeriprimi);
-        Prestito presette = new Prestito(dave, time);
-        Prestito preotto = new Prestito(eddie, unonessunocentomila);
-        Prestito prenove = new Prestito(chester, focus);
-        Prestito predieci = new Prestito(hayley, insurgent);
-        Prestito preundici = new Prestito(gerard, ilprofumo);
-        Prestito predodici = new Prestito(amy, nationalgeographic);
-        Prestito pretredici = new Prestito(deryck, lafabbricadipile);
-        Prestito prequattordici = new Prestito(trent, edge);
-        Prestito prequindici = new Prestito(lars, life);
+
 
         //SALVO
 
         //prestitoDAO.save(preuno);prestitoDAO.save(predue);prestitoDAO.save(pretre);prestitoDAO.save(prequattro);prestitoDAO.save(precinque);
-        //prestitoDAO.save(presei);prestitoDAO.save(presette);prestitoDAO.save(preotto);prestitoDAO.save(prenove);prestitoDAO.save(predieci);
-        //prestitoDAO.save(preundici);prestitoDAO.save(predodici);prestitoDAO.save(pretredici);prestitoDAO.save(prequattordici);prestitoDAO.save(prequindici);
+
 
         //TEST DEI METODI
 
+        //System.out.println("METODO UNO");
+
+        //try {
+        //System.out.println(elementoDAO.getByISBN(""));
+        //} catch (Exception e) {
+        //    System.err.println("Errore ISBN: " + e.getMessage());
+        //}
+
+        //System.out.println("METODO DUE");
+
+        //try {
+        //    elementoDAO.deleteByISBN("");
+        //} catch (Exception e) {
+        //System.err.println("Errore ISBN: " + e.getMessage());
+        //}
 
 
+        //System.out.println("METODO TRE");
+        //try {
+        //    System.out.println(elementoDAO.getByYear());
+        //} catch (Exception e) {
+        //    System.err.println("Errore Anno : " + e.getMessage());
+        //}
 
+        //System.out.println("METODO QUATTRO");
 
+        //try {
+        //    System.out.println(elementoDAO.getByAuthor(""));
+        //} catch (Exception e) {
+        //    System.err.println("ERRORE AUTORE: " + e.getMessage());
+        //}
 
+        //System.out.println("METODO CINQUE");
 
+        //try {
+        //    System.out.println(elementoDAO.getByTitle(""));
+        //} catch (Exception e) {
+        //    System.err.println("ERRORE TITOLO : " + e.getMessage());
+        //}
 
+        //System.out.println("METODO SEI");
 
+        //try {
+        //    System.out.println(prestitoDAO.getPrestitiScadutiNonRestituiti());
+        //} catch (Exception e) {
+        //    System.err.println("ERRORE PRESTITI : " + e.getMessage());
+        //}
 
-        System.out.println("HELLLLOOOOO");
+        //System.out.println("METODO SETTE");
 
+        //try {
+        //System.out.println(prestitoDAO.getPrestitiInCorso(""));
+        //} catch (Exception e) {
+        //System.err.println("ERRORE PRESTITI : " + e.getMessage());
+        //}
+
+        System.out.println("Hello");
 
     }
 }

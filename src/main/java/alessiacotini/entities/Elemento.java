@@ -45,11 +45,17 @@ public abstract class Elemento {
     //GETTER E SETTER - I SETTER PER IL MOMENTO NON SERVONO MA PER COMPLETEZZA LI IMPLEMENTO
 
     //GENERO UN NUMERO CASUALE MO DI ISBN
-
-    public String getIsbn() {
+    @PrePersist
+    public void generaIsbn() {
+        if (this.isbn == null) {
             SecureRandom random = new SecureRandom();
-            long ISBN = 100_000_000_000L + (Math.abs(random.nextLong()) % 900_000_000_000L);
-            return ISBN + "0";
+            long numeroCasuale = random.nextLong(900_000_000_000L);
+            long ISBN = 100_000_000_000L + numeroCasuale;
+            this.isbn = ISBN + "0";
+        }
+    }
+    public String getIsbn() {
+        return this.isbn;
     }
 
     public UUID getElemento_id() {

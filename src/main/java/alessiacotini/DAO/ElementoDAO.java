@@ -38,24 +38,28 @@ public class ElementoDAO {
                     .setParameter("param", isbn)
                     .getSingleResult();
         } catch (jakarta.persistence.NoResultException e) {
-            throw new NoResultException("ISBN ricercato non disponibile in archivio");
+            throw new jakarta.persistence.NoResultException("ISBN ricercato non disponibile in archivio");
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
-    //RICERCO E CANCELLO UTILIZZANDO IL METODO SOPRA
+    // RICERCO E CANCELLO DENTRO LA TRANSAZIONE
     public void deleteByISBN(String isbn) {
-        Elemento elementoDalDB = this.getByISBN(isbn);
         EntityTransaction transazione = this.entityManager.getTransaction();
         try {
             transazione.begin();
+            Elemento elementoDalDB = this.getByISBN(isbn);
             this.entityManager.remove(elementoDalDB);
             transazione.commit();
+
             System.out.println("L'elemento '" + elementoDalDB.getTitolo() + "' è stato eliminato dal DATABASE");
+        } catch (jakarta.persistence.NoResultException e) {
+            if (transazione.isActive()) transazione.rollback();
+            System.err.println("Impossibile eliminare: " + e.getMessage());
         } catch (Exception e) {
             if (transazione.isActive()) transazione.rollback();
-            throw new RuntimeException("Errore durante l'eliminazione dell'elemento, " + e.getMessage());
+            throw new RuntimeException("Errore durante l'eliminazione dell'elemento: " + e.getMessage());
         }
     }
 

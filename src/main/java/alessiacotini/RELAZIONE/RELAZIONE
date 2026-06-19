@@ -1,0 +1,24 @@
+Per gestire l'archivio della biblioteca ho strutturato il database e le entità
+cercando di mantenere pulizia nel codice ed efficenza.
+Di seguito spiego i motivi tecnici per cui ho scelto di utilizzare l'ereditarietà
+JOINED e le relazioni @ManyToOne.
+Nel mio modello ho un'entità generica Elemento contenente i dati comuni come ISBN,
+titolo e anno appartenenti
+a tutti i singolo articoli della biblioteca che viene esteso da Libro e Rivista,
+con le loro specificità aggiunte.
+Ho scelto la strategia InheritanceType.JOINED per tre motivi principali:
+Niente tabelle piene di valori [null] : Se avessi usato la strategia SINGLE_TABLE,
+ad esempio, avrei avuto un'unicatabella gigante con tantissimi campi vuoti.
+Integrità dei dati perchè mi permette di impostare i campi importanti come not null, ad esempio,
+posso obbligare il database a pretendere sempre l'autore per un libro, cosa che non avrei potuto
+fare con una tabella unica.
+Database pulito avendo tre tabelle ben distinte (elementi, libri, riviste).
+Ho usato le relazioni ManyToOne perchè la gestione dei Prestiti è il punto in cui si incrociano
+le entità del progetto.
+Un prestito deve sapere quale utente ha preso l'elemento e quale Elemento (Libro o Rivista) è
+stato rimosso dallo scaffale.
+Quindi molti prestiti possono essere associati ad un elemento con la prerogativa di un numero infinito
+di quell'elemento all'interno della libreria, allo stesso modo molti prestiti possono essere assocuati
+all'id di un utente.
+Grazie alla combinazione della strategia JOINED e delle relazioni @ManyToOne, sono riuscita a creare
+un'applicazione che genera anche un database relazionale pronto per essere ampliato.

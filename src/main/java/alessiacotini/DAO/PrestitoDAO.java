@@ -57,17 +57,11 @@ public class PrestitoDAO {
     //RICERCA DI PRESTITI SCADUTI O NON RESTITUITI
     public List<Prestito> getPrestitiScadutiNonRestituiti() {
         try {
-            List<Prestito> prestitiTrovati = this.entityManager.createQuery(
+            return this.entityManager.createQuery(
                             "SELECT pre FROM Prestito pre WHERE pre.data_restituzione_effettiva IS NULL AND pre.data_restituzione_prevista < :param",
                             Prestito.class)
                     .setParameter("param", LocalDate.now())
                     .getResultList();
-            if (prestitiTrovati.isEmpty()) {
-                throw new NoResultException("La ricerca non ha prodotto risultati");
-            }
-            return prestitiTrovati;
-        } catch (NoResultException e) {
-            throw e;
         } catch (Exception e) {
             throw new RuntimeException("Errore durante la ricerca dei prestiti: " + e.getMessage());
         }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.UUID;
 
 @Entity
@@ -40,11 +41,23 @@ public class Utente {
 
     //GETTER E SETTER
 
-    public String getNumero_di_tessera() {
-        SecureRandom random = new SecureRandom();
-        long numerotessera = 100_000_000_000L + (Math.abs(random.nextLong()) % 900_000_000_000L);
-        return numerotessera + "T";
-        //TUTTE LE TESSERE FINISCONO CON LA LETTERA T DOPO 12 N CASUALI
+    @PrePersist
+    protected void generaNumeroTessera() {
+        if (this.numero_di_tessera == null) {
+            Random random = new Random();
+            long positiveRandomLong = random.nextLong() & Long.MAX_VALUE;
+            long numeroCasuale = 100_000_000_000L + (positiveRandomLong % 900_000_000_000L);
+
+            this.numero_di_tessera = numeroCasuale + "T";
+        }
+    }
+
+    //TUTTE LE TESSERE FINIRANNO CON LA T
+    //ED INOLTRE AVRANNO UN NUMERO ASSEGNATO PRIMA DEL SALVATAGGIO PER NON RISULTARE NULL
+
+
+    public String getNumeroDiTessera() {
+        return numero_di_tessera;
     }
 
     public String getNome_utente() {
