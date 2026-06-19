@@ -46,7 +46,7 @@ public abstract class Elemento {
 
     //GENERO UN NUMERO CASUALE MO DI ISBN
 
-    public static String getIsbn() {
+    public String getIsbn() {
             SecureRandom random = new SecureRandom();
             long ISBN = 100_000_000_000L + (Math.abs(random.nextLong()) % 900_000_000_000L);
             return ISBN + "0";
@@ -75,6 +75,7 @@ public abstract class Elemento {
     public void setNumero_pagine(int numero_pagine) {
         this.numero_pagine = numero_pagine;
     }
+
 
 
 }
