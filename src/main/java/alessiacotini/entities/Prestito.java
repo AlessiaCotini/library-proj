@@ -19,21 +19,23 @@ public class Prestito {
     //MOLTI PRESTITI POSSONO ESSERE ADDOCIATI ALL'ID DI UN UTENTE
 
     @ManyToOne
-    @JoinColumn(name = "utente_id")
+    @JoinColumn(name = "utente_id", nullable = false)
     private Utente utente;
 
     //MOLTI ELEMENTI POSSONO ESSERE ASSOCIATI AD UN PRESTITO
+    //MA NON E' RICHIESTO QUINDI MANY PRESTITI POSSONO ESSERE ASSOCIATI TO ONE LIBRO/RIVISTA
+    //CON LA PREROGATIVA CHE CI SIANO N LIBRI/RIVISTE DELLO STESSO TIPO ALL INTERNO DELLA LIBRERIA
 
-    @OneToMany
-    @JoinColumn(name="prestito_id")
-    private List<Elemento> elementi;
+    @ManyToOne
+    @JoinColumn(name="elemento_id", nullable = false)
+    private Elemento elemento;
 
     //COSTRUTTORI
 
     protected Prestito(){}
-    public Prestito(Utente utente, List<Elemento> elementi){
+    public Prestito(Utente utente, Elemento elemento){
         this.utente= utente;
-        this.elementi = elementi;
+        this.elemento = elemento;
     }
 
     //GETTER E SETTER
@@ -43,12 +45,12 @@ public class Prestito {
         return utente;
     }
 
-    public List<Elemento> getElementi() {
-        return elementi;
+    public Elemento getElemento() {
+        return elemento;
     }
 
-    public void setElementi(List<Elemento> elementi) {
-        this.elementi = elementi;
+    public void setElementi(Elemento elemento) {
+        this.elemento = elemento;
     }
 
     public void setUtente(Utente utente) {
