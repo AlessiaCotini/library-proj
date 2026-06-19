@@ -1,17 +1,16 @@
 package alessiacotini.DAO;
 
-import alessiacotini.entities.Elemento;
 import alessiacotini.entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class utenteDAO {
+public class UtenteDAO {
 
     //EM
     private final EntityManager entityManager;
 
     //COSTR
-    public utenteDAO(EntityManager entityManager) {
+    public UtenteDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

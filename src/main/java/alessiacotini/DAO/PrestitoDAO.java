@@ -8,22 +8,29 @@ import alessiacotini.exception.NoResultException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class prestitoDAO {
+public class PrestitoDAO {
     //EM
     private final EntityManager entityManager;
 
     //COSTRUTTORE
-    public prestitoDAO(EntityManager entityManager) {
+    public PrestitoDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     //METODO
-    public void save(Prestito prestito){
+    public void save(Prestito prestito) {
         EntityTransaction transazione = this.entityManager.getTransaction();
-        transazione.begin();
-        this.entityManager.persist(prestito);
-        transazione.commit();
-        System.out.println("L'utente "+prestito.getUtente()+" ha aggiunto "+ prestito.getPrestito_id() + " ai suoi prestiti.");
+        try {
+            transazione.begin();
+            this.entityManager.persist(prestito);
+            transazione.commit();
+            System.out.println("L'utente " + prestito.getUtente() + " ha aggiunto " + prestito.getPrestito_id() + " ai suoi prestiti.");
+        } catch (Exception e) {
+            if (transazione.isActive()) {
+                transazione.rollback();
+            }
+            throw new RuntimeException("Errore durante il salvataggio del prestito: " + e.getMessage());
+        }
     }
 
     //RICERCA ELEMENTI ATTUALMENTE IN PRESTITO DATO UN CODICE UTENTE

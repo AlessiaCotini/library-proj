@@ -52,6 +52,10 @@ public abstract class Elemento {
             return ISBN + "0";
     }
 
+    public UUID getElemento_id() {
+        return elemento_id;
+    }
+
     public String getTitolo() {
         return titolo;
     }
@@ -76,6 +80,14 @@ public abstract class Elemento {
         this.numero_pagine = numero_pagine;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Elemento{" +
+                "elemento_id=" + elemento_id +
+                ", isbn='" + isbn + '\'' +
+                ", titolo='" + titolo + '\'' +
+                ", anno_pubblicazione=" + anno_pubblicazione +
+                ", numero_pagine=" + numero_pagine +
+                '}';
+    }
 }

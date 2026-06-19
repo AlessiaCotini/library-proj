@@ -8,11 +8,11 @@ import alessiacotini.exception.NoResultException;
 
 import java.util.List;
 
-public class elementoDAO {
+public class ElementoDAO {
     private final EntityManager entityManager;
 
     //COSTRUTTORE
-    public elementoDAO(EntityManager entityManager) {
+    public ElementoDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

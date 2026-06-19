@@ -70,4 +70,15 @@ public class Utente {
     public void setData_di_nascita(LocalDate data_di_nascita) {
         this.data_di_nascita = data_di_nascita;
     }
+
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "utente_id=" + utente_id +
+                ", nome_utente='" + nome_utente + '\'' +
+                ", cognome_utente='" + cognome_utente + '\'' +
+                ", data_di_nascita=" + data_di_nascita +
+                ", numero_di_tessera='" + numero_di_tessera + '\'' +
+                '}';
+    }
 }

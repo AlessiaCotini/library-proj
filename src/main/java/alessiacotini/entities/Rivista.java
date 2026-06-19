@@ -34,4 +34,16 @@ public class Rivista extends Elemento{
     public void setPeriodicita(Periodicita periodicita) {
         this.periodicita = periodicita;
     }
+
+    @Override
+    public String toString() {
+        return "Rivista{" +
+                "elemento_id=" + getElemento_id() +
+                ", isbn='" + getIsbn() + '\'' +
+                ", titolo='" + getTitolo() + '\'' +
+                ", anno_pubblicazione=" + getAnno_pubblicazione() +
+                ", numero_pagine=" + getNumero_pagine() +
+                "periodicita=" + periodicita +
+                '}';
+    }
 }

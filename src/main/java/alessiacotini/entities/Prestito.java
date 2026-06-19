@@ -3,7 +3,6 @@ package alessiacotini.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -43,12 +42,12 @@ public class Prestito {
     //COSTRUTTORI
 
     protected Prestito(){}
-    public Prestito(Utente utente, Elemento elemento,LocalDate data_inizio,LocalDate data_restituzione_prevista,LocalDate data_restituzione_effettiva ){
+    public Prestito(Utente utente, Elemento elemento){
         this.utente= utente;
         this.elemento = elemento;
         this.data_inizio = LocalDate.now();
         this.data_restituzione_prevista = LocalDate.now().plusDays(30);
-        this.data_restituzione_effettiva = data_restituzione_effettiva;
+        this.data_restituzione_effettiva = null;
     }
 
     //GETTER E SETTER
@@ -62,7 +61,7 @@ public class Prestito {
         return elemento;
     }
 
-    public void setElementi(Elemento elemento) {
+    public void setElemento(Elemento elemento) {
         this.elemento = elemento;
     }
 
@@ -96,5 +95,17 @@ public class Prestito {
 
     public void setData_restituzione_effettiva(LocalDate data_restituzione_effettiva) {
         this.data_restituzione_effettiva = data_restituzione_effettiva;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestito{" +
+                "prestito_id=" + prestito_id +
+                ", data_inizio=" + data_inizio +
+                ", data_restituzione_prevista=" + data_restituzione_prevista +
+                ", data_restituzione_effettiva=" + data_restituzione_effettiva +
+                ", utente=" + getUtente() +
+                ", elemento=" + getElemento() +
+                '}';
     }
 }
